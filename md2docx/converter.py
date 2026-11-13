@@ -97,15 +97,16 @@ class MarkdownToDocx:
 
         if template is None:
             template = (
-                Path(__file__).resolve().parent.parent / "apa-reference.docx"
+                Path(__file__).resolve().parent
+                / "templates"
+                / "apa-reference.docx"
             )
 
         if not template.is_file():
             raise FileNotFoundError(
                 f"APA reference template not found: {template}\n"
-                "Create it with: python -c "
-                "'from md2docx import MarkdownToDocx; "
-                "MarkdownToDocx.create_apa_template(\"apa-reference.docx\")'"
+                "The package's default template should be installed at "
+                "md2docx/templates/apa-reference.docx."
             )
 
         with tempfile.NamedTemporaryFile(
