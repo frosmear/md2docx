@@ -193,8 +193,8 @@ class MarkdownToDocx:
         if not isinstance(config, dict):
             raise ValueError("JSON configuration must contain an object.")
 
-        # Relative paths resolve from the script's directory.
-        base_dir = Path(__file__).resolve().parent.parent
+        # Relative paths resolve from the current working directory.
+        base_dir = Path.cwd()
 
         def resolve_path(value, default=None):
             if value is None:
